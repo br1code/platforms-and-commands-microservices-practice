@@ -50,7 +50,7 @@ namespace PlatformService.Controllers
             {
                 var platform = _mapper.Map<Platform>(platformCreateDTO);
                 await _platformRepository.CreatePlatformAsync(platform).ConfigureAwait(false);
-                await _platformRepository.SaveChangesAsync();
+                await _platformRepository.SaveChangesAsync().ConfigureAwait(false);
                 var platformReadDTO = _mapper.Map<PlatformReadDTO>(platform);
                 return CreatedAtRoute(nameof(GetPlatformById), new { Id = platformReadDTO.Id }, platformReadDTO);
             }
